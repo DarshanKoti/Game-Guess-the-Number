@@ -1,23 +1,23 @@
 # 🎮 Game | Guess the Number  
 
-A fun and interactive number guessing game built using **HTML, CSS, and JavaScript**.  
-The goal is simple — try to guess the secret number within the given range and limited number of attempts.  
-You’ll get hints like *“Too High”* or *“Too Low”* after each guess to help you reach the correct answer.  
+A fun and interactive number guessing game built using **HTML, Tailwind CSS, and JavaScript**.  
+The goal is simple — try to guess the secret number within a limited number of attempts.  
+You’ll get hints like *“Too High”* or *“Too Low”* after each guess to guide you to the correct answer.  
 
 ---
 
 ## 🚀 Features  
 - 🎯 Random number generation every round  
-- 💡 Real-time feedback (too high / too low)  
-- 🔁 Option to restart and play again  
-- 🧠 Simple logic and beginner-friendly JavaScript code  
-- 🎨 Clean and responsive design using CSS  
+- 💡 Real-time feedback (Too High / Too Low)  
+- 🔁 Option to restart the game  
+- 🧠 Simple logic and beginner-friendly JavaScript  
+- 🎨 Clean and responsive design using Tailwind CSS  
 
 ---
 
 ## 🛠️ Tech Stack  
 - **HTML** – Structure of the game  
-- **CSS** – Styling and layout  
+- **Tailwind CSS** – Modern, responsive styling  
 - **JavaScript** – Game logic and interactivity  
 
 ---
