@@ -25,4 +25,4 @@ You’ll get hints like *“Too High”* or *“Too Low”* after each guess to 
 ## 📦 Installation & Setup  
 1. Clone this repository  
    ```bash
-   git clone https://github.com/your-username/guess-the-number.git
+   git clone https://github.com/DarshanKoti/Game-Guess-the-Number.git
