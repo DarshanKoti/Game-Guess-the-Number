@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the number game</title>
+    <link rel="stylesheet" href="/Javascript/dist/output.css">
+</head>
+
+<body class="bg-slate-800">
+    <section class="container max-w-lg m-auto mt-10 pb-5 rounded bg-amber-50 flex flex-col justify-center items-center">
+        <h1
+            class="bg-black w-full text-white py-3 text-2xl text-center font-extrabold text-shadow-2xs text-shadow-blue-600">
+            Guess the Number</h1>
+        <div class="bg-red-200 p-2 my-5 mx-3 border-2 border-red-500 rounded">
+            <div class="text-center">
+                <h2 class="font-bold text-center text-red-400 text-shadow-2xs text-shadow-red-700 text-md">* Rules
+                    *
+                </h2>
+
+                <p class="my-2 px-8 text-shadow-xs">Try to find the random number between 1-100.
+                    <br>
+                    You have 10 attempts to guess the correct number.
+                    <br>
+                    Keep guessing until you find the correct number.
+                </p>
+            </div>
+
+        </div>
+
+        <form action="#">
+            <p class="flex flex-col justify-center items-center text-2xl">Guess the number</p>
+            <p class=""></p>
+            <input type="text" autocomplete="off" id="userInput"
+                class="w-xs p-2 text-center text-xl border-2 rounded my-2 outline-0 bg-white block">
+            <input type="submit" value="Guess" id="guessBtn"
+                class="bg-black p-2 text-white w-xs font-bold rounded shadow-md cursor-pointer">
+        </form>
+
+        <p class="my-2">Previous Guesses : <span class="guessSlot text-red-500">0</span></p>
+        <p>Guesses Remaining : <span class="remainingSlot text-red-500">10</span></p>
+
+    </section>
+
+
+</body>
+
+<script src="script.js"></script>
+
+</html>
