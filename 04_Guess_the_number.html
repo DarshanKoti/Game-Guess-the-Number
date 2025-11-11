@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the number game</title>
+    <link rel="stylesheet" href="/Javascript/dist/output.css"> 
+</head>   
+  
+<body class="bg-slate-800">
+    <section class="container max-w-lg m-auto mt-10 pb-5 rounded bg-amber-50 flex flex-col justify-center items-center">
+        <h1
+            class="bg-black w-full text-white py-3 text-2xl text-center font-extrabold text-shadow-2xs text-shadow-blue-600">
+            Guess the Number</h1>
+        <div class="bg-red-200 p-2 my-5 mx-3 border-2 border-red-500 rounded">
+            <div class="text-center">
+                <h2 class="font-bold text-center text-red-400 text-shadow-2xs text-shadow-red-700 text-md">* Rules
+                    *
+                </h2>
+
+                <p class="my-2 px-8 text-shadow-xs">Try to find the random number between 1-100.
+                    <br>
+                    You have 10 attempts to guess the correct number.
+                    <br>
+                    Keep guessing until you find the correct number.
+                </p>
+            </div>
+
+        </div>
+
+        <form action="#">
+            <p class="flex flex-col justify-center items-center text-2xl">Guess the number</p>
+            <p class=""></p>
+            <input type="text" autocomplete="off" id="userInput"
+                class="w-xs p-2 text-center text-xl border-2 rounded my-2 outline-0 bg-white block">
+            <input type="submit" value="Guess" id="guessBtn"
+                class="bg-black p-2 text-white w-xs font-bold rounded shadow-md cursor-pointer">
+        </form>
+
+        <p class="my-2">Previous Guesses : <span class="guessSlot text-red-500">0</span></p>
+        <p>Guesses Remaining : <span class="remainingSlot text-red-500">10</span></p>
+
+    </section>
+
+
+</body>
+<script>
+    const radNum = parseInt(Math.random() * 100 + 1);
+
+    const form = document.querySelector("form")
+    const userInput = document.querySelector("#userInput");
+    const guessBtn = document.querySelector("#guessBtn")
+    let guessSlot = document.querySelector(".guessSlot")
+    let remaining = document.querySelector(".remainingSlot")
+
+    const p = document.createElement("p")
+    form.appendChild(p)
+
+
+
+    let prevGuess = []
+    let numGuess = 1;
+
+    let playGame = true;
+
+    if (playGame) {
+        guessBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const guess = parseInt(userInput.value)
+
+            validateGuess(guess)
+        })
+    }
+
+    function validateGuess(guess) {
+        if (isNaN(guess)) {
+            showError("⚠️ Please enter valid number.")
+        }
+        else if (guess < 1 || guess > 100) {
+            showError("⚠️ Enter number between 1-100 range.")
+        }
+        else {
+            prevGuess.push(guess)
+            if (numGuess === 10) {
+                displayGuess(guess)
+                p.className = "p-1 text-md rounded my-1 font-bold text-green-500"
+                p.textContent = `❌ Game Over!! Random number was ${radNum}`;
+                endGame();
+                return;
+            }
+            else {
+                checkGuess(guess)
+                displayGuess(guess)
+            }
+
+        }
+    }
+
+    function checkGuess(guess) {
+        if (guess === radNum) {
+            p.className = "p-1 text-md rounded my-1 font-bold text-green-500"
+            p.textContent = "✅ You Guessed it right! You won!!";
+            endGame();
+        }
+        else if (guess > radNum) {
+            showError("🔺Your number is 'TOO HIGH'.")
+        }
+        else if (guess < radNum) {
+            showError("🔻Your number is 'TOO LOW'.")
+        }
+    }
+
+    function displayGuess() {
+        userInput.value = "";
+        guessSlot.innerHTML = `${prevGuess}`;
+        numGuess++;
+        remaining.innerHTML = `${11 - numGuess}`
+    }
+
+    function showError(msg) {
+        p.className = "p-1 text-md rounded my-1 font-bold text-red-500"
+        p.textContent = msg;
+    }
+
+    function endGame(guess) {
+        userInput.value = "";
+        userInput.setAttribute("disabled", "")
+        guessBtn.style.display = "none"
+
+        playGame = false;
+        newGame()
+    }
+
+    function newGame(guess) {
+        let startBtn = document.createElement("button");
+        startBtn.textContent = "Start New Game"
+        startBtn.className = "w-xs bg-black p-2 font-bold rounded my-2 text-white";
+        
+        document.querySelector("section").appendChild(startBtn);
+
+        startBtn.addEventListener("click",()=>{
+            location.reload();
+        })
+        
+    }
+
+
+</script>
+
+</html>
